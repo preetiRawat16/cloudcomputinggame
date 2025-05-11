@@ -50,6 +50,7 @@ vertical_alignment = 1
 [node name="RetryButton" type="Button" parent="."]
 layout_mode = 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 offset_left = -80.0
 offset_top = 32.0
 offset_right = 96.0
@@ -73,6 +74,15 @@ offset_bottom = 45.0
 theme = SubResource("Theme_m5628")
 text = "Retry"
 
+=======
+offset_left = -87.0
+offset_top = 3.0
+offset_right = 89.0
+offset_bottom = 45.0
+theme = SubResource("Theme_m5628")
+text = "Retry"
+
+>>>>>>> Stashed changes
 [node name="mainpage" type="Button" parent="."]
 layout_mode = 0
 offset_left = -84.0
