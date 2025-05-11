@@ -49,6 +49,7 @@ vertical_alignment = 1
 
 [node name="RetryButton" type="Button" parent="."]
 layout_mode = 0
+<<<<<<< Updated upstream
 offset_left = -80.0
 offset_top = 32.0
 offset_right = 96.0
@@ -64,6 +65,23 @@ offset_right = 95.0
 offset_bottom = 148.0
 theme = SubResource("Theme_m5628")
 text = "Quit"
+=======
+offset_left = -87.0
+offset_top = 3.0
+offset_right = 89.0
+offset_bottom = 45.0
+theme = SubResource("Theme_m5628")
+text = "Retry"
+
+[node name="mainpage" type="Button" parent="."]
+layout_mode = 0
+offset_left = -84.0
+offset_top = 88.0
+offset_right = 92.0
+offset_bottom = 130.0
+theme = SubResource("Theme_m5628")
+text = "Back to Main Page"
+>>>>>>> Stashed changes
 
 [node name="SaveScoreButton" type="Button" parent="."]
 layout_mode = 0

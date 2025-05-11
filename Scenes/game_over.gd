@@ -2,7 +2,6 @@ extends Control
 
 @onready var score_label = $ScoreLabel
 @onready var retry_button = $RetryButton
-@onready var quit_button = $QuitButton
 @onready var name_input = $NameInput
 @onready var save_score_button = $SaveScoreButton
 
@@ -15,7 +14,6 @@ var http_request = HTTPRequest.new()
 func _ready():
 	# Connect buttons to their respective functions
 	retry_button.pressed.connect(_on_retry_pressed)
-	quit_button.pressed.connect(_on_quit_pressed)
 	save_score_button.pressed.connect(_on_save_score_pressed)
 
 	# Add the HTTPRequest to the scene so it can make the request
