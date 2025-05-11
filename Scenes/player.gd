@@ -21,7 +21,7 @@ var is_invincible = false
 var footstep_delay = 0.3  # Time between footsteps
 var footstep_timer = 0.0
 @onready var jump_sound = $JumpPlayer
-
+signal death_animation_completed
 func _ready():
 	anim.animation_finished.connect(_on_animation_finished)
 	# Load footstep sound
@@ -54,13 +54,23 @@ func take_damage(damage: int):
 		become_invincible()
 
 func die():
-	is_dead = true
-	velocity = Vector2.ZERO
-	anim.play("die")
-	print("Player died!")
-	emit_signal("died")  # 👈 emit first
-	set_process(false)
+	# Disable controls and physics
+	
+	set_process_input(false)
+	
 	set_physics_process(false)
+	
+	# Play the die animation on AnimatedSprite2D
+	
+	$AnimatedSprite2D.play("die")
+	
+	# Wait for the animation to finish
+	
+	await $AnimatedSprite2D.animation_finished
+	
+	# Signal that the full death sequence is done
+	
+	emit_signal("death_sequence_completed")
 
 func become_invincible():
 	is_invincible = true
@@ -203,9 +213,13 @@ func respawn_near_river2():
 		position = Vector2(6000, 100)
 		velocity = Vector2.ZERO
 	
-func play_death_animation() -> void:
-	anim.play("die")  # Replace "death" with your animation name
-	await anim.animation_finished
+func play_death_animation():
+	# Play your death animation here
+	
+	$AnimationPlayer.play("death")
+	# Return a signal that completes when animation is done
+	
+	await $AnimationPlayer.animation_finished
 
 func reset_player():
 	# Reset player state
@@ -223,5 +237,14 @@ func reset_player():
 	anim.play("idle")  # Set the animation to idle or start
 	modulate = Color(1, 1, 1, 1)  # Reset transparency
 
-	# Optional: You can reset other properties (like score or power-ups) if needed
 	print("Player reset complete!")
+
+func _unhandled_input(event):
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_R:
+			reset_player()
+func play_happy_animation():
+	set_physics_process(false)
+	anim.play("attack")
+	await anim.animation_finished
+	get_tree().change_scene_to_file("res://GameOver.tscn")

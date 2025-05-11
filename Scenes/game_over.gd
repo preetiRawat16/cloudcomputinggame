@@ -5,8 +5,7 @@ extends Control
 @onready var quit_button = $QuitButton
 @onready var name_input = $NameInput
 @onready var save_score_button = $SaveScoreButton
-
-
+@onready var main_page = $mainpage
 var final_score = 0
 var api_url = "https://cloudcomputinggame.onrender.com/submit"  # ADD API HERE
 
@@ -18,7 +17,7 @@ func _ready():
 	retry_button.pressed.connect(_on_retry_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
 	save_score_button.pressed.connect(_on_save_score_pressed)
-
+	main_page.pressed.connect(_on_main_page_pressed)
 	# Add the HTTPRequest to the scene so it can make the request
 	add_child(http_request)
 	
@@ -44,6 +43,12 @@ func _on_save_score_pressed():
 		return  # Optionally show a warning if name is empty
 	save_score(name, final_score)
 	save_score_button.disabled = true  # Disable the save button after saving
+
+func _on_main_page_pressed():
+	GlobalManager.player_rest = true
+	queue_free()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/StartGame.tscn")
 
 
 func save_score(name: String, score: int):

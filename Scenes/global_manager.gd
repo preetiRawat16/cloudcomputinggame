@@ -26,3 +26,4 @@ func _ready():
 		bgm_player.volume_db = -25
 		add_child(bgm_player)
 		bgm_player.play()  # Start playback manually
+	

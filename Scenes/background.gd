@@ -8,7 +8,6 @@ var player_finished = false
 var game_over_shown = false
 
 func _ready():
-	# Initialize UI
 	update_hearts()
 	player.life_changed.connect(_on_player_life_changed)
 	player.mushroom_collected.connect(_on_mushroom_collected)
@@ -69,7 +68,8 @@ func _on_river_area_body_entered2(body: Node2D):
 		
 func _on_player_died():
 	if !game_over_shown:
-		await player.play_death_animation()  # Wait for the animation
+		await player.play_death_animation()
+		# Wait for the animation
 		show_game_over()
 
 func _on_game_timer_timeout():
@@ -100,8 +100,9 @@ func show_game_over():
 	game_over_shown = true
 	var score = calculate_score()
 	print("Game Over! Score: ", score)
-
+	 
 	var game_over = preload("res://Scenes/GameOver.tscn").instantiate()
+	await get_tree().create_timer(1).timeout 
 	get_tree().root.add_child(game_over)
 
 	await get_tree().process_frame
@@ -112,10 +113,11 @@ func show_game_over():
 		game_over.global_position = camera.global_position
 
 	game_over.set_score(score)
-
+	
 	# ✅ Only pause the game AFTER everything is shown
 	get_tree().paused = true
 func _on_finish_line_body_entered(body):
 	if body == player:
 		player_finished = true
+		player.play_happy_animation()
 		show_game_over()

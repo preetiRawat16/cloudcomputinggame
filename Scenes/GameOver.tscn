@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn5frroqipcvw"]
+[gd_scene load_steps=4 format=3 uid="uid://dn5frroqipcvw"]
 
 [ext_resource type="Script" uid="uid://cmyoccfxm5kbe" path="res://Scenes/game_over.gd" id="1_k52d1"]
+[ext_resource type="Texture2D" uid="uid://bdsdb6ei8hd6w" path="res://assets/BG_1_loop_right_end.png" id="2_k52d1"]
 
 [sub_resource type="Theme" id="Theme_m5628"]
 
@@ -17,20 +18,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k52d1")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -446.0
+offset_top = -154.0
+offset_right = 441.0
+offset_bottom = 325.0
+
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = -447.0
 offset_top = -155.0
-offset_right = 433.0
-offset_bottom = 274.0
-color = Color(0.396078, 0.439216, 0.235294, 1)
+offset_right = 440.0
+offset_bottom = 325.0
+texture = ExtResource("2_k52d1")
+expand_mode = 1
 
 [node name="GameOverLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = -116.0
-offset_top = -139.0
-offset_right = 110.0
-offset_bottom = -82.0
+offset_left = -114.0
+offset_top = -138.0
+offset_right = 112.0
+offset_bottom = -81.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Game Over"
 horizontal_alignment = 1
@@ -38,10 +48,11 @@ vertical_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = -123.0
-offset_top = -78.0
-offset_right = 103.0
-offset_bottom = -21.0
+offset_left = -119.0
+offset_top = -83.0
+offset_right = 107.0
+offset_bottom = -26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Score: "
 horizontal_alignment = 1
@@ -49,35 +60,44 @@ vertical_alignment = 1
 
 [node name="RetryButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = -93.0
-offset_top = 15.0
-offset_right = 83.0
-offset_bottom = 57.0
+offset_left = -89.0
+offset_top = -20.0
+offset_right = 87.0
+offset_bottom = 22.0
 theme = SubResource("Theme_m5628")
 text = "Retry"
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = -94.0
-offset_top = 86.0
-offset_right = 82.0
-offset_bottom = 128.0
+offset_left = -84.0
+offset_top = 39.0
+offset_right = 92.0
+offset_bottom = 81.0
 theme = SubResource("Theme_m5628")
 text = "Quit"
 
+[node name="mainpage" type="Button" parent="."]
+layout_mode = 0
+offset_left = -84.0
+offset_top = 96.0
+offset_right = 92.0
+offset_bottom = 138.0
+theme = SubResource("Theme_m5628")
+text = "Back to Main Page"
+
 [node name="SaveScoreButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = -97.0
-offset_top = 197.0
-offset_right = 79.0
-offset_bottom = 239.0
+offset_left = -81.0
+offset_top = 212.0
+offset_right = 95.0
+offset_bottom = 254.0
 theme = SubResource("Theme_m5628")
 text = "Save Score"
 
 [node name="NameInput" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = -127.0
-offset_top = 146.0
-offset_right = 134.0
-offset_bottom = 177.0
+offset_left = -116.0
+offset_top = 163.0
+offset_right = 145.0
+offset_bottom = 194.0
 placeholder_text = "Enter Name"

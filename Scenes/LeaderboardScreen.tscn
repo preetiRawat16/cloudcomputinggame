@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuw26r7k6l51k"]
+[gd_scene load_steps=3 format=3 uid="uid://cuw26r7k6l51k"]
 
 [ext_resource type="Script" uid="uid://b7v1y4vkrb8vx" path="res://Scenes/leaderboard_screen.gd" id="1_p5yp8"]
+[ext_resource type="Texture2D" uid="uid://bgw8xtc1tsqy4" path="res://assets/BG_1.png" id="2_wq2pq"]
 
 [node name="LeaderboardScreen" type="Control"]
 layout_mode = 3
@@ -11,13 +12,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p5yp8")
 
-[node name="Panel" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 81.0
+offset_right = 751.0
+offset_bottom = 561.0
+color = Color(0.00820202, 0.00820202, 0.00820202, 1)
+
+[node name="Panel" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 336.0
 offset_top = 85.0
 offset_right = 752.0
 offset_bottom = 560.0
-color = Color(0.396078, 0.439216, 0.235294, 1)
+texture = ExtResource("2_wq2pq")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="HTTPRequest" type="HTTPRequest" parent="Panel"]
 
