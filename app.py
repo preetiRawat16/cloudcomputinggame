@@ -1,13 +1,18 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import sqlite3
 import os
 
 app = Flask(__name__)
-DB_NAME = 'leaderboard.db'
+CORS(app)  # Allows all origins; adjust for specific domains if needed
 
-# Create DB table if it doesn't exist
+# Use absolute path to avoid DB issues in Docker/Render
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE_DIR, 'leaderboard.db')
+
+# Initialize the database and table
 def init_db():
-    conn = sqlite3.connect(DB_NAME)
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS scores (
@@ -28,11 +33,11 @@ def home():
 @app.route('/submit', methods=['POST'])
 def submit_score():
     data = request.get_json()
-    name = data.get('name')
+    name = data.get('name', '').strip()
     score = data.get('score')
 
-    if name and isinstance(score, int):
-        conn = sqlite3.connect(DB_NAME)
+    if name and isinstance(score, int) and 0 <= score <= 100000:
+        conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
         cursor.execute('INSERT INTO scores (name, score) VALUES (?, ?)', (name, score))
         conn.commit()
@@ -44,9 +49,9 @@ def submit_score():
 
 @app.route('/leaderboard', methods=['GET'])
 def get_leaderboard():
-    conn = sqlite3.connect(DB_NAME)
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-    cursor.execute('SELECT name, score FROM scores ORDER BY score DESC')
+    cursor.execute('SELECT name, score FROM scores ORDER BY score DESC LIMIT 10')
     results = cursor.fetchall()
     conn.close()
 

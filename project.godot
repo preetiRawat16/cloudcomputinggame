@@ -23,3 +23,8 @@ GlobalManager="*res://Scenes/GlobalManager.tscn"
 
 window/size/mode=2
 window/stretch/mode="canvas_items"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
