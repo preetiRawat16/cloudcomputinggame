@@ -7,7 +7,7 @@ extends Control
 @onready var save_score_button = $SaveScoreButton
 
 var final_score = 0
-var api_url = "http://127.0.0.1:5000/submit"  # ADD API HERE
+var api_url = "https://cloudcomputinggame.onrender.com/submit"  # ADD API HERE
 
 # Godot HTTPRequest object to make the POST request
 var http_request = HTTPRequest.new()
