@@ -6,8 +6,9 @@ extends Control
 @onready var name_input = $NameInput
 @onready var save_score_button = $SaveScoreButton
 
+
 var final_score = 0
-var api_url = "https://cloudcomputinggame.onrender.com/submit"  # ADD API HERE
+var api_url = "http://127.0.0.1:5000/submit"  # ADD API HERE
 
 # Godot HTTPRequest object to make the POST request
 var http_request = HTTPRequest.new()
@@ -43,7 +44,6 @@ func _on_save_score_pressed():
 		return  # Optionally show a warning if name is empty
 	save_score(name, final_score)
 	save_score_button.disabled = true  # Disable the save button after saving
-
 
 
 func save_score(name: String, score: int):

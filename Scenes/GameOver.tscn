@@ -27,10 +27,10 @@ color = Color(0.396078, 0.439216, 0.235294, 1)
 
 [node name="GameOverLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = -114.0
-offset_top = -138.0
-offset_right = 112.0
-offset_bottom = -81.0
+offset_left = -116.0
+offset_top = -139.0
+offset_right = 110.0
+offset_bottom = -82.0
 theme_override_font_sizes/font_size = 30
 text = "Game Over"
 horizontal_alignment = 1
@@ -38,10 +38,10 @@ vertical_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = -120.0
-offset_top = -55.0
-offset_right = 106.0
-offset_bottom = 2.0
+offset_left = -123.0
+offset_top = -78.0
+offset_right = 103.0
+offset_bottom = -21.0
 theme_override_font_sizes/font_size = 30
 text = "Score: "
 horizontal_alignment = 1
@@ -49,35 +49,35 @@ vertical_alignment = 1
 
 [node name="RetryButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = -80.0
-offset_top = 32.0
-offset_right = 96.0
-offset_bottom = 74.0
+offset_left = -93.0
+offset_top = 15.0
+offset_right = 83.0
+offset_bottom = 57.0
 theme = SubResource("Theme_m5628")
 text = "Retry"
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = -81.0
-offset_top = 106.0
-offset_right = 95.0
-offset_bottom = 148.0
+offset_left = -94.0
+offset_top = 86.0
+offset_right = 82.0
+offset_bottom = 128.0
 theme = SubResource("Theme_m5628")
 text = "Quit"
 
 [node name="SaveScoreButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = -81.0
-offset_top = 212.0
-offset_right = 95.0
-offset_bottom = 254.0
+offset_left = -97.0
+offset_top = 197.0
+offset_right = 79.0
+offset_bottom = 239.0
 theme = SubResource("Theme_m5628")
 text = "Save Score"
 
 [node name="NameInput" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = -116.0
-offset_top = 163.0
-offset_right = 145.0
-offset_bottom = 194.0
+offset_left = -127.0
+offset_top = 146.0
+offset_right = 134.0
+offset_bottom = 177.0
 placeholder_text = "Enter Name"

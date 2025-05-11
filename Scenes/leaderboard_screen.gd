@@ -20,7 +20,7 @@ func _ready():
 	fetch_leaderboard()
 
 func fetch_leaderboard():
-	var error = http_request.request("https://cloudcomputinggame.onrender.com/leaderboard") #ADD API HERE
+	var error = http_request.request("http://127.0.0.1:5000/leaderboard") #ADD API HERE
 	if error != OK:
 		push_error("Failed to start request: " + str(error))
 

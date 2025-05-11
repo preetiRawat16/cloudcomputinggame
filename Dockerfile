@@ -1,20 +1,20 @@
-# Use the official Python image from the Docker Hub as a base image
+# Use an official Python image
 FROM python:3.10-slim
 
-# Set the working directory inside the container
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy the requirements.txt file into the container
-COPY requirements.txt /app/
+# Copy requirements first (for caching)
+COPY requirements.txt .
 
-# Install the required Python packages
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code into the container
-COPY . /app/
+# Copy the rest of the code
+COPY . .
 
-# Expose port 5000, which is where Flask will run
+# Expose the port (Flask runs on 5000)
 EXPOSE 5000
 
-# Set the default command to run when the container starts
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+# Start the Flask app using gunicorn
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
