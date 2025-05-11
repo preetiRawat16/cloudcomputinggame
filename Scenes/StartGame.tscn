@@ -30,18 +30,18 @@ texture = ExtResource("2_7p22t")
 
 [node name="play" type="Button" parent="."]
 layout_mode = 0
-offset_left = 359.0
-offset_top = 246.0
-offset_right = 658.0
-offset_bottom = 295.0
+offset_left = 364.0
+offset_top = 247.0
+offset_right = 663.0
+offset_bottom = 296.0
 text = "PLAY"
 
 [node name="leaderboard" type="Button" parent="."]
 layout_mode = 0
-offset_left = 359.0
-offset_top = 326.0
-offset_right = 658.0
-offset_bottom = 375.0
+offset_left = 363.0
+offset_top = 334.0
+offset_right = 662.0
+offset_bottom = 383.0
 text = "LeaderBoard"
 
 [node name="exit" type="Button" parent="."]

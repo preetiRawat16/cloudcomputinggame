@@ -44,6 +44,8 @@ func _on_save_score_pressed():
 	save_score(name, final_score)
 	save_score_button.disabled = true  # Disable the save button after saving
 
+
+
 func save_score(name: String, score: int):
 	# Prepare data to send to the API
 	var data = {

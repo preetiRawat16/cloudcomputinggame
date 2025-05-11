@@ -36,40 +36,47 @@ func _on_request_completed(_result, response_code, _headers, body):
 	else:
 		push_error("Request failed: " + str(response_code))
 
+func _compare_scores_desc(a, b) -> bool:
+	return a["score"] > b["score"]
+
 func show_leaderboard(data):
 	# Clear existing
-	
 	for child in entries_container.get_children():
-		
 		child.queue_free()
-	
-	entries_container.add_child(HSeparator.new())
-	
-	data.sort_custom(func(a, b): return b["score"] - a["score"])
+
+	data.sort_custom(Callable(self, "_compare_scores_desc"))
+
 	for i in range(data.size()):
-		
 		var entry = data[i]
-		
+
 		var hbox = HBoxContainer.new()
-		hbox.add_theme_constant_override("separation", 90)  # Space between columns
+		hbox.add_theme_constant_override("separation", 90)
+
 		var row_padding = MarginContainer.new()
-		row_padding.add_theme_constant_override("margin_top", 4)    # Top padding
-		row_padding.add_theme_constant_override("margin_bottom", 4) # Bottom padding
+		row_padding.add_theme_constant_override("margin_top", 4)
+		row_padding.add_theme_constant_override("margin_bottom", 4)
 		row_padding.add_child(hbox)
+
 		var rank = Label.new()
-		rank.text = "#%d" % (i+1)
+		rank.text = "#%d" % (i + 1)
 		rank.custom_minimum_size.x = 40
+
 		var name = Label.new()
 		name.text = entry["name"]
 		name.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+
 		var score = Label.new()
 		score.text = str(entry["score"])
+
 		hbox.add_child(rank)
 		hbox.add_child(name)
 		hbox.add_child(score)
-		entries_container.add_child(row_padding)  # Add padded container instead of raw HBox
+
+		entries_container.add_child(row_padding)
 		if i < data.size() - 1:
 			entries_container.add_child(HSeparator.new())
-			
+
+
+
 func _on_back_button_pressed():
 	queue_free()
